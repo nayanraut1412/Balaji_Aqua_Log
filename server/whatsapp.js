@@ -13,7 +13,7 @@ async function sendTemplateMessage() {
         },
         data: JSON.stringify({
             messaging_product: 'whatsapp',
-            to: '919665926311',
+            to: process.env.PHONE_NO,
             type: 'template',
             template: {
                 name: 'hello_world',
@@ -38,7 +38,7 @@ async function sendTextMessage() {
         },
         data: JSON.stringify({
             messaging_product: 'whatsapp',
-            to: '919665926311',
+            to: process.env.PHONE_NO,
             type: 'text',
             text:{
                 body: 'This is a nayan message'
@@ -59,7 +59,7 @@ async function sendMediaMessage() {
         },
         data: JSON.stringify({
             messaging_product: 'whatsapp',
-            to: '919665926311',
+            to: process.env.PHONE_NO,
             type: 'image',
             image: {
                 link: 'https://dummyimage.com/600x400/000/fff.png&text=nayan',

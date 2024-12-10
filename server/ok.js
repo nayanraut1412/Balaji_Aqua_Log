@@ -12,7 +12,7 @@ async function createMessage() {
   const message = await client.messages.create({
     body: "Hello there!",
     from: "whatsapp:+14155238886",
-    to: "whatsapp:+919665926311",
+    to: `whatsapp:+${process.env.PHONE_NO}`,
   });
 
   console.log(message.body);

@@ -29,7 +29,8 @@ exports.createOrder = async (req, res) => {
       },
       data: JSON.stringify({
         messaging_product: 'whatsapp',
-        to: '919665926311',
+        to: process.env.PHONE_NO,
+        // to: orderData.phoneNumber,
         type: 'template',
         template: {
           name: 'orders',
