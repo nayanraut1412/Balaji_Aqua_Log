@@ -15,12 +15,12 @@ const Home = () => {
             >
               Login
             </Link>
-            <Link
+            {/* <Link
               to="/register"
               className="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition duration-300 w-full sm:w-auto text-center"
             >
               Register
-            </Link>
+            </Link> */}
           </div>
 
 

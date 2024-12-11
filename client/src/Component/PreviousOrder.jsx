@@ -12,7 +12,7 @@ const PreviousOrders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/orders');
+                const response = await fetch('https://balaji-aqua-log.onrender.com/api/orders');
                 const data = await response.json();
                 if (response.ok) {
                     const sortedOrders = data.orders.sort((a, b) => {
