@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
 // import { Link } from 'react-router-dom';
+import { toast, ToastContainer, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NewOrder = () => {
   const [formData, setFormData] = useState({
@@ -36,7 +38,9 @@ const NewOrder = () => {
       const data = await response.json();
   
       if (response.ok) {
-        alert('Order submitted successfully!');
+        toast.success('Order submitted successfully!');
+
+        // alert('Order submitted successfully!');
         // Clear form or redirect if necessary
         setFormData({
           name: '',
@@ -52,7 +56,7 @@ const NewOrder = () => {
       }
     } catch (error) {
       console.error('Error submitting order:', error);
-      alert('An error occurred while submitting the order.');
+      toast.error('An error occurred while submitting the order.');
     }
   };
   
@@ -60,6 +64,8 @@ const NewOrder = () => {
   return (
     <>
     <Navbar />
+    <ToastContainer position="top-right" autoClose={3000} closeOnClick pauseOnHover transition={Slide} /> {/* Toastify notifications */}
+
     <div className="flex items-center justify-center min-h-screen bg-green-50">
       <div className="text-center p-6 bg-white rounded-lg shadow-lg max-w-md w-full">
         <h1 className="text-3xl font-semibold mb-4 text-green-600">New Order</h1>

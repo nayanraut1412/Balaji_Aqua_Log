@@ -129,6 +129,9 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast, Slide, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const Login = () => {
@@ -174,8 +177,14 @@ const Login = () => {
         setFormData({ username: '', password: '' }); // Clear form
 
         // Redirect or navigate to a protected page
-        alert('Login successful! Redirecting...');
-        navigate('/neworder');
+        // toast.success('Slot deleted successfully');
+
+        toast.success('Login successful! Redirecting...');
+        
+        // toast.success('Signin successful! Redirecting to Dashboard...');
+        setTimeout(() => {
+          navigate('/neworder');
+        }, 3000);
 
       } else {
         setError(data.message || 'Login failed');
@@ -189,6 +198,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <ToastContainer position="top-right" autoClose={3000} closeOnClick pauseOnHover transition={Slide} /> {/* Toastify notifications */}
       <div className="p-8 bg-white rounded shadow-md w-full max-w-md">
         <h1 className="text-2xl font-semibold mb-6 text-gray-700">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-4">

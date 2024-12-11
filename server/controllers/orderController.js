@@ -20,72 +20,72 @@ exports.createOrder = async (req, res) => {
     Duration: ${orderData.duration}
         `;
 
-    const response = await axios({
-      url: 'https://graph.facebook.com/v21.0/498717726658120/messages',
-      method: 'post',
-      headers: {
-        'Authorization': `Bearer ${process.env.WHATSAPP_TOKEN}`,
-        'Content-Type': 'application/json'
-      },
-      data: JSON.stringify({
-        messaging_product: 'whatsapp',
-        to: process.env.PHONE_NO,
-        // to: orderData.phoneNumber,
-        type: 'template',
-        template: {
-          name: 'orders',
-          language: {
-            code: 'en'
-          },
-          components: [
-            {
-              type: 'header',
-              parameters: [
-                {
-                  type: 'text',
-                  text: orderData.name,
-                }
-              ]
-            },
-            {
-              type: 'body',
-              parameters: [
-                {
-                  type: 'text',
-                  text: orderData.name,
-                },
-                {
-                  type: 'text',
-                  text: orderData.cansTaken
-                },
-                {
-                  type: 'text',
-                  text: orderData.phoneNumber
-                },
-                {
-                  type: 'text',
-                  text: orderData.duration
-                },
-                {
-                  type: 'text',
-                  text: orderData.orderDate
-                },
-                {
-                  type: 'text',
-                  text: orderData.paymentStatus === 'Paid' ? '✅ Paid' : '❌ Pending'
-                },
-                {
-                  type: 'text',
-                  text: orderData.address
-                }
+    // const response = await axios({
+    //   url: 'https://graph.facebook.com/v21.0/498717726658120/messages',
+    //   method: 'post',
+    //   headers: {
+    //     'Authorization': `Bearer ${process.env.WHATSAPP_TOKEN}`,
+    //     'Content-Type': 'application/json'
+    //   },
+    //   data: JSON.stringify({
+    //     messaging_product: 'whatsapp',
+    //     to: process.env.PHONE_NO,
+    //     // to: orderData.phoneNumber,
+    //     type: 'template',
+    //     template: {
+    //       name: 'orders',
+    //       language: {
+    //         code: 'en'
+    //       },
+    //       components: [
+    //         {
+    //           type: 'header',
+    //           parameters: [
+    //             {
+    //               type: 'text',
+    //               text: orderData.name,
+    //             }
+    //           ]
+    //         },
+    //         {
+    //           type: 'body',
+    //           parameters: [
+    //             {
+    //               type: 'text',
+    //               text: orderData.name,
+    //             },
+    //             {
+    //               type: 'text',
+    //               text: orderData.cansTaken
+    //             },
+    //             {
+    //               type: 'text',
+    //               text: orderData.phoneNumber
+    //             },
+    //             {
+    //               type: 'text',
+    //               text: orderData.duration
+    //             },
+    //             {
+    //               type: 'text',
+    //               text: orderData.orderDate
+    //             },
+    //             {
+    //               type: 'text',
+    //               text: orderData.paymentStatus === 'Paid' ? '✅ Paid' : '❌ Pending'
+    //             },
+    //             {
+    //               type: 'text',
+    //               text: orderData.address
+    //             }
 
-              ]
-            }
-          ]
-        }
-      })
-    })
-    console.log(response.data)
+    //           ]
+    //         }
+    //       ]
+    //     }
+    //   })
+    // })
+    // console.log(response.data)
 
     res.status(201).json({ success: true, message: 'Order created and WhatsApp message sent successfully!', order: newOrder });
   } catch (error) {
