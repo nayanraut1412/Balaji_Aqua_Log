@@ -52,6 +52,7 @@
 
 //       if (response.ok) {
 //         setSuccess('User registered successfully');
+        
 //         setFormData({ username: '', email: '', password: '' });
 //       } else {
 //         setError(data.message || 'Registration failed');
@@ -174,6 +175,9 @@ const Login = () => {
       if (response.ok) {
         setSuccess('Login successful');
         localStorage.setItem('token', data.token); // Store JWT in localStorage
+        localStorage.setItem('isLoggedIn', 'true');
+        // localStorage.setItem('token', response.data.token);
+
         setFormData({ username: '', password: '' }); // Clear form
 
         // Redirect or navigate to a protected page
